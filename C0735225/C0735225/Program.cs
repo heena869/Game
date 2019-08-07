@@ -12,15 +12,15 @@ namespace C0735225
     {
         static void Main(string[] args)
         {
-            // new GameManager().Run();
-            Database.Driver();
+            new GameManager().Run();
+          //  Database.Driver();
         }
     }
 
     class GameManager
     {
         ArrayList Players = new ArrayList();
-
+        
         public void CreatePlayers()
         {
             for (int i = 0; i < 4; i++)
@@ -173,7 +173,7 @@ namespace C0735225
         {
 
             SQLiteConnection sqlite_conn;
-            // Create a new database connection:
+          //  CreateTable  new database;
             sqlite_conn = new SQLiteConnection("Data Source= database.db; Version = 3; New = True; Compress = True; ");
             // Open the connection:
             try
