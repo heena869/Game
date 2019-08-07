@@ -12,15 +12,15 @@ namespace C0735225
     {
         static void Main(string[] args)
         {
-            new GameManager().Run();
-          //  Database.Driver();
+            // new GameManager().Run();
+            Database.Driver();
         }
     }
 
     class GameManager
     {
         ArrayList Players = new ArrayList();
-        
+
         public void CreatePlayers()
         {
             for (int i = 0; i < 4; i++)
@@ -164,16 +164,16 @@ namespace C0735225
         {
             SQLiteConnection sqlite_conn;
             sqlite_conn = CreateConnection();
-            // CreateTable(sqlite_conn);
-            InsertData(sqlite_conn);
-            ReadData(sqlite_conn);
+            CreateTable(sqlite_conn);
+            //InsertData(sqlite_conn);
+            //ReadData(sqlite_conn);
         }
 
         static SQLiteConnection CreateConnection()
         {
 
             SQLiteConnection sqlite_conn;
-          //  CreateTable  new database;
+            // Create a new database connection:
             sqlite_conn = new SQLiteConnection("Data Source= database.db; Version = 3; New = True; Compress = True; ");
             // Open the connection:
             try
@@ -187,16 +187,11 @@ namespace C0735225
 
         static void CreateTable(SQLiteConnection conn)
         {
-
             SQLiteCommand sqlite_cmd;
-            string Createsql = "CREATE TABLE SampleTable (Col1 VARCHAR(20), Col2 INT)";
-            string Createsql1 = "CREATE TABLE SampleTable1 (Col1 VARCHAR(20), Col2 INT)";
+            string Createsql = "CREATE TABLE GameBoard (PropertyID INT, OwnerName VARCHAR(20), PropertyValue INT)";
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = Createsql;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = Createsql1;
-            sqlite_cmd.ExecuteNonQuery();
-
         }
 
         static void InsertData(SQLiteConnection conn)
