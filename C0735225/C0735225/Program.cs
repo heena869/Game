@@ -14,7 +14,8 @@ namespace C0735225
         {
             // new GameManager().Run();
             // Database.Driver();
-            Database.TestReadData();
+            Database.SetupDatabase();
+            Database.ReadData(Database.sqlite_conn);
         }
     }
 
@@ -136,11 +137,6 @@ namespace C0735225
     {
         public static ArrayList MyGameBoard = new ArrayList();
 
-        public static void ReadDatabase()
-        {
-
-        }
-
         public static void SetupMyGameBoard()
         {
             string RecordToInsert;
@@ -175,10 +171,7 @@ namespace C0735225
         {
             sqlite_conn = CreateConnection();
         }
-        public static void TestReadData()
-        {
-            ReadData(Database.sqlite_conn);
-        }
+
         public static void Driver()
         {
             sqlite_conn = CreateConnection();
